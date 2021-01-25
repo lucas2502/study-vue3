@@ -3,11 +3,7 @@
     <h1>To do list! Old syntaxs</h1>
     <button @click="handleShowHideList">Show list</button>
     <br />
-    <input type="text" 
-		@keyup.enter="addTask" 
-		v-focus 
-		v-model="currentTasks" 
-	/>
+    <input type="text" @keyup.enter="addTask" v-focus v-model="currentTasks" />
     <ul v-if="showList">
       <li
         v-for="(task, index) in tasks"
@@ -40,7 +36,9 @@ export default {
     showList: false,
     tasks: [{ name: "Study vue3", isDone: false }],
   }),
-
+  mounted() {
+    console.log("Mounted now old syntaxs!");
+  },
   methods: {
     handleShowHideList() {
       this.showList = !this.showList;
@@ -65,9 +63,10 @@ export default {
 
 <style scoped>
 .line-through {
-text-decoration: line-through;
+  text-decoration: line-through;
 }
 
 .task-item {
-cursor: pointer
-}</style>
+  cursor: pointer;
+}
+</style>

@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import { reactive } from "vue"; // import this for create values reactive
+import { onMounted, reactive } from "vue"; // import this for create values reactive
 const focus = {
   inserted: (el) => {
     el.focus();
@@ -42,6 +42,10 @@ export default {
       currentTasks: undefined,
       showList: false,
       tasks: [{ name: "Study vue3", isDone: false }],
+    })
+
+    onMounted( () => {
+      console.log('onMounted now with new syntaxs')
     })
 
     function handleShowHideList() {
