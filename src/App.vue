@@ -1,4 +1,5 @@
 <template>
+  <Modal/>
   <div id="nav">
     <router-link to="/">Home</router-link> |
     <router-link to="/HomeNewSyntaxs">HomeNewSyntaxs</router-link>
@@ -6,6 +7,14 @@
   <router-view/>
 </template>
 
+<script>
+import Modal from  './components/Modal/index'
+export default {
+  components: {
+    Modal
+  }
+}
+</script>
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

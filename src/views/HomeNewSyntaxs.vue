@@ -1,5 +1,4 @@
 <template>
-  <div>
     <h1>To do list! New syntaxs</h1>
     <button @click="handleShowHideList">Show list</button>
     <br />
@@ -21,11 +20,25 @@
         <button @click="remove(task)">&times;</button>
       </li>
     </ul>
-  </div>
+
+    <br/>
+    <br/>
+    <br/>
+    <button @click="goHome">Redirect to Home</button>
+
+    <br/>
+    <br/>
+    <br/>
+    <button @click="handleLogin">handleLogin</button>
+    <button @click="handCreate">handleCreate</button>
 </template>
 
 <script>
 import { onMounted, reactive } from "vue"; // import this for create values reactive
+import { useRouter } from 'vue-router'
+
+import useModal from '../hooks/useModal'
+
 const focus = {
   inserted: (el) => {
     el.focus();
@@ -37,6 +50,8 @@ export default {
   },
 
   setup() {
+    const router = useRouter()
+    const modal = useModal()
     // not reactive
     const state = reactive({
       currentTasks: undefined,
@@ -47,6 +62,22 @@ export default {
     onMounted( () => {
       console.log('onMounted now with new syntaxs')
     })
+    
+    function handleLogin(){
+      modal.open({
+        component: 'ModalLogin'
+      })
+    }
+
+    function handleCreate(){
+      modal.open({
+        component: 'ModalCreate'
+      })
+    }
+
+    function goHome (){
+      router.push({name: 'Home'})
+    }
 
     function handleShowHideList() {
       state.showList = !state.showList;
@@ -72,6 +103,9 @@ export default {
       addTask,
       complete,
       remove,
+      goHome,
+      handleLogin,
+      handleCreate
     };
   },
 };
