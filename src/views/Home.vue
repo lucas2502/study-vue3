@@ -3,7 +3,11 @@
     <h1>To do list! Old syntaxs</h1>
     <button @click="handleShowHideList">Show list</button>
     <br />
-    <input type="text" @keyup.enter="addTask" v-focus v-model="currentTasks" />
+    <input type="text" 
+		@keyup.enter="addTask" 
+		v-focus 
+		v-model="currentTasks" 
+	/>
     <ul v-if="showList">
       <li
         v-for="(task, index) in tasks"
